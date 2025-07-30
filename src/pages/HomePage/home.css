@@ -1,0 +1,18 @@
+.heading{
+     text-align: center;
+    font-size:bold;
+    font-family:sans-serif;
+    margin:10px;
+    padding:10px
+}
+
+.home-container{
+margin: 0 auto;
+heigth:80%;
+  width:80%;
+     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+     transition: 0.3s;
+   background-color: #cdcec8ff;
+    box-sizing: border-box;
+    
+}
