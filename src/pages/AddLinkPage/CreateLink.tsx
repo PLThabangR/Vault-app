@@ -1,15 +1,17 @@
+import Card from "../../components/card/Card"
 import "./createLink.css"
 import { use, useEffect, useState } from 'react'
 
 
   interface userLinkInterface{
+    id: number,
     title: string,
     link: string,
     description: string,
     tags?: string
 }
 const CreateLink = () => {
-  //State to handle user values
+  //State to handle user values 
    const [userlinks, setUserLinks] = useState<userLinkInterface[]>((()=>{
     //Get userlinks from localstorage
     const userLinks = localStorage.getItem('userlinks');
@@ -44,7 +46,9 @@ const CreateLink = () => {
    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
      event.preventDefault();
      //create new link object
-     const newLink = { title, link, description, tags };
+     const newLink: userLinkInterface  = {
+      id:userlinks.length + 1,
+       title, link, description, tags };
      //Add new link to userlinks using the spread operator
      setUserLinks([{...userlinks, newLink}]);
      //Reset the form values
@@ -58,7 +62,7 @@ const CreateLink = () => {
   useEffect(()=>{
     //Save userlinks to localstorage and convert json to a string
      localStorage.setItem('userlinks', JSON.stringify(userlinks));
-     console.log(userlinks)
+     console.log("User link values ",userlinks.newlink)
      //let the use effect run only when the userlinks change
   },userlinks)
   
@@ -84,6 +88,11 @@ const CreateLink = () => {
     <button type="submit" value="Submit">Save</button> 
   </form>
 
+
+    {/* Display userlinks */}
+    { userlinks.map((userlink, index) => (
+        <Card key={index} title={userlink.title} link={userlink.link} description={userlink.description} tags={userlink.tags}/>
+      ))}
 
     </div>
   )
