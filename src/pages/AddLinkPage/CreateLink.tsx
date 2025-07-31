@@ -48,7 +48,7 @@ const CreateLink = () => {
      const newLink: userLinkInterface  = {
        title, link, description, tags };
      //Add new link to userlinks using the spread operator
-     setUserLinks([{...userlinks, newLink}]);
+     setUserLinks([...userlinks, newLink]);
      //Reset the form values
      setTitle('');
      setLink('');
@@ -61,8 +61,12 @@ const CreateLink = () => {
     //Save userlinks to localstorage and convert json to a string
      localStorage.setItem('userlinks', JSON.stringify(userlinks));
      console.log("User link values ",userlinks)
+
+     for(let i=0;i<userlinks.length;i++){
+      console.log("user from array",userlinks[i])
+     }
      //let the use effect run only when the userlinks change
-  },userlinks)
+  },[userlinks])
   
   return (
     <div className="create-link-container">
