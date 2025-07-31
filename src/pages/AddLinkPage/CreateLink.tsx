@@ -4,7 +4,6 @@ import { use, useEffect, useState } from 'react'
 
 
   interface userLinkInterface{
-    id: number,
     title: string,
     link: string,
     description: string,
@@ -47,7 +46,6 @@ const CreateLink = () => {
      event.preventDefault();
      //create new link object
      const newLink: userLinkInterface  = {
-      id:userlinks.length + 1,
        title, link, description, tags };
      //Add new link to userlinks using the spread operator
      setUserLinks([{...userlinks, newLink}]);
@@ -62,7 +60,7 @@ const CreateLink = () => {
   useEffect(()=>{
     //Save userlinks to localstorage and convert json to a string
      localStorage.setItem('userlinks', JSON.stringify(userlinks));
-     console.log("User link values ",userlinks.newlink)
+     console.log("User link values ",userlinks)
      //let the use effect run only when the userlinks change
   },userlinks)
   
