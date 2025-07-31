@@ -2,7 +2,8 @@
 .card_section{
     display: flex;
     flex-wrap:wrap;
-    justify-content: space-around;
+    flex-direction:column;
+    justify-content: center;
     align-items: center;
     text-align:center;
    max-width: 100%; 
@@ -21,9 +22,9 @@
 
 .card-button{
     flex:display;
-    flex-direction:space-around;
-    
-    gap:5px
+    flex-direction:space-between;
+    align-items:center;
+    gap:10px
 }
 /* Card hover style */
 .card_section:hover{
@@ -54,8 +55,8 @@
   border-radius: 20x; /* Rounded corners */
   cursor: pointer;
   font-family: 'Arial', sans-serif;
-  font-size: 14px;
-  font-weight: semi-bold;
+  font-size: 12px;
+  font-weight: small;
   text-align:center;
   text-transform: uppercase;
 

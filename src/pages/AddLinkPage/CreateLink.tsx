@@ -10,6 +10,14 @@ import {  useEffect, useState } from 'react'
     description: string,
     tags?: string
 }
+
+interface CardProps{
+    userLink:userLinkInterface,
+    onUpdateUserLink:(index: number, updatedLink: userLinkInterface) => void,
+    onDelete:(index: number) => void
+}
+
+
 const CreateLink = () => {
   //State to handle user values 
    const [userlinks, setUserLinks] = useState<userLinkInterface[]>((()=>{
@@ -68,18 +76,18 @@ const CreateLink = () => {
      //let the use effect run only when the userlinks change
   },[userlinks])
 
-  //Update userlinks
-  // const updateUserLink = (index: number, updatedLink: userLinkInterface) => {
-  //   const updatedUserLinks =  userlinks.filter((undex)=> undex.title !== updatedLink.title);
-   
-  //   setUserLinks(updatedUserLinks);
-  // };
+ //Update userlink
+  const onUpdateUserLink = (index: number, updatedLink: userLinkInterface) => {
+    setUserLinks(
+      userlinks.map((link) => (link.id === index ? updatedLink : link))
+    );
+  };
 
 
   // //remove links
-  // const removeUserLink = (index: number) => {
-  //    setUserLinks(userlinks.filter((_, i) => i !== index));
-  // };
+   const onDeleteUserLink = (index: number) => {
+      setUserLinks(userlinks.filter((_, i) => i !== index));
+   };
   
   return (
     <div className="create-link-container">
@@ -107,10 +115,10 @@ const CreateLink = () => {
     {/* Display userlinks */}
    <div className="card-container"> { userlinks.map((userlink) => (
       
-        <Card key={userlink.id} title={userlink.title} 
-        link={userlink.link} 
-        description={userlink.description} 
-        tags={userlink.tags}
+        <Card key={userlink.id} 
+        userLink={userlink}
+        onUpdateUserLink={onUpdateUserLink}
+        onDelete={onDeleteUserLink}
         
         />
       ))}
