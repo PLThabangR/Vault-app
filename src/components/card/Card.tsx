@@ -1,6 +1,8 @@
 import './card.css'
+import { MdDelete } from "react-icons/md";
 // Interface for card
 interface CardProps{
+    id:number,
     title:string,
     link:string,
     description:string,
@@ -8,9 +10,9 @@ interface CardProps{
     
 }
 // Card component props
-const Card = ({title,link,description,tags} :CardProps) => {
+const Card = ({id,title,link,description,tags} :CardProps) => {
   return (
-    <article>
+    <article >
        
      
           {/* Card section styling  */}
@@ -19,7 +21,12 @@ const Card = ({title,link,description,tags} :CardProps) => {
 <div className='card_content' >
         <h1>{title}</h1>
         <p>{description}</p>
-        <button>Read more</button>
+        <p>{tags}</p>
+       <div className='card_button'>
+
+        <button className='update-button' >Update </button>
+          <span className='delete-icon'><MdDelete /></span>
+       </div>
        
       </div>
 

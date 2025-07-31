@@ -1,23 +1,29 @@
-/* Bacground color for the component */
-article{
-    background-color: snow;
-}
 /* Card section style */
 .card_section{
     display: flex;
-    justify-content: space-between;
+    flex-wrap:wrap;
+    justify-content: space-around;
     align-items: center;
-   max-width: 90%; 
-    width: 700px;
-    margin: 0 auto;
-    height: 400px;
+    text-align:center;
+   max-width: 100%; 
+
+    margin: 5px;
+    padding:5px;
+    height: 300px;
      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-     transition: 0.3s;
+     transition: 0.2s;
    background-color: #f4f5f0;
     box-sizing: border-box;
   
     
 
+}
+
+.card-button{
+    flex:display;
+    flex-direction:space-around;
+    
+    gap:5px
 }
 /* Card hover style */
 .card_section:hover{
@@ -32,8 +38,52 @@ article{
 .card_content{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100&;
+   
+}
+
+.update-button{
+     width: 100px;
+ /* Basic Styling */
+  background-color: #4ca8afff; /* Green */
+  color: white;
+  padding: 5px ;
+  border: none;
+  border-radius: 20x; /* Rounded corners */
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: semi-bold;
+  text-align:center;
+  text-transform: uppercase;
+
+  margin:5px;
+  
+  /* Shadow and Transition for interactivity */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease; /* Smooth transitions for hover/active states */
+}
+
+.delete-button{
+    width: 60%;
+ /* Basic Styling */
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-align:center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin:10px;
+  
+  /* Shadow and Transition for interactivity */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease; /* Smooth transitions for hover/active states */
 }

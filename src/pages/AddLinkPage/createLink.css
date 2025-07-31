@@ -41,6 +41,7 @@ button{
   font-family: 'Arial', sans-serif;
   font-size: 18px;
   font-weight: bold;
+  text-align:center;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin:10px;
@@ -64,3 +65,28 @@ button:hover {
   background-color: #c65757ff;
   padding: 20px;
 }
+
+.card-container{
+  display:flex;
+  flex-direction:row;
+  align-items:space-around;
+  align-content:center;
+  gap:30px;
+}
+.card-container{
+
+}
+
+/* Mobile view */
+@media only screen and (max-width: 760px) {
+    .create-link-container{
+        
+      flex-direction: column;
+        text-align: center;
+        flex-wrap: wrap;
+        align-items: center;
+         margin: 0px auto;
+     
+    }
+
+  }

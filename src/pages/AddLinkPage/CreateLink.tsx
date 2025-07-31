@@ -1,9 +1,10 @@
 import Card from "../../components/card/Card"
 import "./createLink.css"
-import { use, useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
 
 
   interface userLinkInterface{
+    id: number,
     title: string,
     link: string,
     description: string,
@@ -45,11 +46,12 @@ const CreateLink = () => {
    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
      event.preventDefault();
      //create new link object
-     const newLink: userLinkInterface  = {
+     const newLink: userLinkInterface  = { 
+      id: userlinks.length + 1,
        title, link, description, tags };
      //Add new link to userlinks using the spread operator
      setUserLinks([...userlinks, newLink]);
-     //Reset the form values
+     //Reset the form values after saving
      setTitle('');
      setLink('');
      setDescription('');
@@ -62,11 +64,22 @@ const CreateLink = () => {
      localStorage.setItem('userlinks', JSON.stringify(userlinks));
      console.log("User link values ",userlinks)
 
-     for(let i=0;i<userlinks.length;i++){
-      console.log("user from array",userlinks[i])
-     }
+    
      //let the use effect run only when the userlinks change
   },[userlinks])
+
+  //Update userlinks
+  // const updateUserLink = (index: number, updatedLink: userLinkInterface) => {
+  //   const updatedUserLinks =  userlinks.filter((undex)=> undex.title !== updatedLink.title);
+   
+  //   setUserLinks(updatedUserLinks);
+  // };
+
+
+  // //remove links
+  // const removeUserLink = (index: number) => {
+  //    setUserLinks(userlinks.filter((_, i) => i !== index));
+  // };
   
   return (
     <div className="create-link-container">
@@ -92,10 +105,17 @@ const CreateLink = () => {
 
 
     {/* Display userlinks */}
-    { userlinks.map((userlink, index) => (
-        <Card key={index} title={userlink.title} link={userlink.link} description={userlink.description} tags={userlink.tags}/>
+   <div className="card-container"> { userlinks.map((userlink) => (
+      
+        <Card key={userlink.id} title={userlink.title} 
+        link={userlink.link} 
+        description={userlink.description} 
+        tags={userlink.tags}
+        
+        />
       ))}
-
+      </div>
+d
     </div>
   )
 }

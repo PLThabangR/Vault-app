@@ -8,11 +8,11 @@
 
 .home-container{
 margin: 0 auto;
-heigth:80%;
-  width:80%;
+heigth:100%;
+  max-width:70%;
      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
      transition: 0.3s;
    background-color: #cdcec8ff;
     box-sizing: border-box;
-    
+    margin-top:5rem;
 }
