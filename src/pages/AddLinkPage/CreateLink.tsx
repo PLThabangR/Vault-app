@@ -54,6 +54,9 @@ const CreateLink = () => {
    //Handle form submission when the user clicks the submit button
    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
      event.preventDefault();
+
+     //Do nothing if title, link or description is empty
+     if(!title || !link || !description) return
      //create new link object
      const newLink: userLinkInterface  = { 
       //Increase the id by 1 using the length of the userlinks
