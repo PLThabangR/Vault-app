@@ -28,7 +28,7 @@ const Card = ({userlink, onUpdateUserLink, onDelete} :cardProps) => {
         <p>{userlink.tags}</p>
        <div className='card-button'>
     {/* Passing the userlink to the onUpdateUserLink function which is on createlink */}
-        <button className='update-button'onClick={() => onUpdateUserLink(userlink)} >Update </button>
+        <button className='update-button'onClick={() => onUpdateUserLink(userlink.id)} >Update </button>
           <span className='delete-icon' onClick={() => onDelete(userlink.id)}><MdDelete style={{fontSize:'1rem'}}/></span>
        </div>
        

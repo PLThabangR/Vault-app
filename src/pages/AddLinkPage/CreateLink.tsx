@@ -67,21 +67,21 @@ const CreateLink = () => {
      setTags('');
    }; 
    
-    const UpdateLinks = (event: React.FormEvent<HTMLFormElement>,userlink:userLinkInterface) => {
-     event.preventDefault();
-     //create new link object
-     const newLink: userLinkInterface  = { 
-      //Increase the id by 1 using the length of the userlinks
-      id: userlinks.length + 1,
-       title, link, description, tags };
-     //Add new link to userlinks using the spread operator
-     setUserLinks([...userlinks, newLink]);
-     //Reset the form values after saving
+    const onUpdateUserLink = (id: number) => {
+   //  event.preventDefault();
+     //Map throught the list look for the userlink with the same id
+     //Update the userlink
+      console.log("Update",id)
+     
+    
+     setUserLinks(previousState => previousState.map(userlink => userlink.id === id ? {...userlink, title, link, description, tags} : userlink) )
+
+  //    //Reset the form values after saving
      setTitle('');
      setLink('');
      setDescription('');
      setTags('');
-   }; 
+    }; 
    
    //Save userlinks to localstorage
   useEffect(()=>{
@@ -95,17 +95,7 @@ const CreateLink = () => {
   },[userlinks])
 
  //Update userlink
-  const onUpdateUserLink = (updatedLink: any) => {
-    console.log("Updated link",updatedLink)
 
-    if(updatedLink.length <= 0) return console.log ("No link to update")
-    //update the userlink
-    setUserLinks(
-      //Use the map function to loop through the userlinks until we find the user to be updated
-      //if the id of the updated link is the same as the id of the userlink, set statethe updated link
-      userlinks.map((link) => (link.id === updatedLink.id ? updatedLink : link))
-    );
-  };
 
 
   //remove links
