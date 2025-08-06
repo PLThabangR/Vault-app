@@ -1,4 +1,5 @@
 import Card from "../../components/card/Card"
+import Search from "../../components/form/Search"
 import "./createLink.css"
 import {  use, useEffect, useState } from 'react'
 
@@ -127,6 +128,7 @@ const CreateLink = () => {
     <button type="submit" value="Submit">Save</button> 
   </form>
 
+    <Search  userlinks={userlinks}/>
 
     {/* Display userlinks */}
    <div className="card-container"> { userlinks.map((userlink) => (

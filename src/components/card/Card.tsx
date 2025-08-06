@@ -1,6 +1,6 @@
 import './card.css'
 import { MdDelete } from "react-icons/md";
-// Interface for card
+// Interface for card 
 interface userLink{
  id: number,
     title: string,
@@ -9,7 +9,7 @@ interface userLink{
     tags?: string
     
 }
-// Card component props
+// Card component props to be passed with functions
 interface cardProps{
   userlink:userLink,
   onUpdateUserLink:(index: number, updatedLink: userLink) => void,
