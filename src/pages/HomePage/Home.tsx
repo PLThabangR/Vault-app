@@ -3,8 +3,10 @@ import CreateLink from '../AddLinkPage/CreateLink'
 
 const Home = () => {
   return (
+    // Container for the home page
     <div className='home-container'>
-        <h1 className='heading'>Save your links</h1>
+      // Heading
+        <h1 className='heading'>Link Vaults</h1>
       <CreateLink/>
      
    
