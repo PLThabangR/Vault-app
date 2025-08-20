@@ -55,6 +55,14 @@ button{
 .create-link-container{
   text-align:center;
   margin:10px;
+  margin: 0 auto;
+heigth:100%;
+  max-width:70%;
+     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+     transition: 0.3s;
+ background-color: #FFE5EB;
+    box-sizing: border-box;
+    margin-top:5rem;
 }
 
 .navbar{
