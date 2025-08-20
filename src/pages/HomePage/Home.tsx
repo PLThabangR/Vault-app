@@ -5,12 +5,7 @@ const Home = () => {
   return (
     // Container for the home page
     <div className='home-container'>
- 
-        <h1 className='heading'>Link Vaults</h1>
       <CreateLink/>
-     
-   
-
     </div>
   )
 }

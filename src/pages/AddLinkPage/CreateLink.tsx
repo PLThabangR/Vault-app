@@ -1,5 +1,4 @@
 import Card from "../../components/card/Card"
-
 import "./createLink.css"
 import {  useEffect, useState } from 'react'
 
@@ -12,11 +11,6 @@ import {  useEffect, useState } from 'react'
     tags?: string
 }
 
-interface CardProps{
-    userLink:userLinkInterface,
-    onUpdateUserLink:(index: number, updatedLink: userLinkInterface) => void,
-    onDelete:(index: number) => void
-}
 
 
 const CreateLink = () => {
@@ -27,7 +21,7 @@ const CreateLink = () => {
     //Parse userlinks if they exist or return an empty array
     return userLinks ? JSON.parse(userLinks) : [];
    }))
-  
+    //Array to hold filtered userlinks
       const [filteredLinkArray, setFilteredLinkArray] = useState<userLinkInterface[]>([]);
       //search state
       const [search, setSearch] = useState('');
@@ -49,7 +43,7 @@ const DisplaySearchCard = () =>{
    //search array
     return (
       filteredLinkArray.map((userlink) => (
-      
+        //passing the filtered userlink to the card
         <Card key={userlink.id} 
         userlink={userlink}
         onUpdateUserLink={onUpdateUserLink}
@@ -130,17 +124,18 @@ const DisplaySearchCard = () =>{
      setDescription('');
      setTags('');
    }; 
-   
-    const onUpdateUserLink = (id: number) => {
+    //Update userlink
+    const onUpdateUserLink = (id: number, updatedLink: userLinkInterface) => {
+
+      if(!updatedLink.title || !updatedLink.link || !updatedLink.description) return alert('Please fill in all fields')
+
    //  event.preventDefault();
      //Map throught the list look for the userlink with the same id
-     //Update the userlink
-   
-     
+     //Update the userlink   
       //looping thrpugh the userlinks and update the userlink with the same id
-     setUserLinks(previousState => previousState.map(userlink => userlink.id === id ? {...userlink, title, link, description, tags} : userlink) )
-
-  //    //Reset the form values after saving
+     setUserLinks(previousState => previousState.map(userlink => userlink.id === id ? updatedLink : userlink) )
+      
+    //Reset the form values after saving
      setTitle('');
      setLink('');
      setDescription('');
@@ -157,46 +152,51 @@ const DisplaySearchCard = () =>{
    //well call this function when the search term changes
    //the use effect changes the ui dynamically as input is typed
   useEffect(()=>{
-    
   //  handleSearchFunction()
   //check if the search is empty or not
     if(search.length > 0){
      // filteredLinkArray =userlinks.filter((userlink) => userlink.tags?.toLowerCase().includes(search.toLowerCase()))
      const filteredLinks = userlinks.filter((userlink) => userlink.tags?.toLowerCase().includes(search.toLowerCase()));
-     console.log("filteredLinks",filteredLinks)
+   
      //Set the filtered userlinks to the array
      setFilteredLinkArray(filteredLinks);
 
     }else{
       setFilteredLinkArray([]);
-      console.log("filteredLinks",filteredLinkArray)
      }
+
   },[search.length>0])
 
- //Update userlink
 
 
 
   //remove links
    const onDeleteUserLink = (id: number) => {
-      console.log("Delete",id)
       //remove the userlink
       setUserLinks(previousState => previousState.filter(userlink => userlink.id !== id));
    };
   
   return (
     <div className="create-link-container">
+        
       {/* Search component */}
          {/* <Search  userlinks={userlinks}/> */}
-       <div className="search-container">
-          <input
+
+         <div className="navbar">
+          <h1 className='heading'>Link Vaults</h1>
+          <div className="search-container">
+          <input 
         type="text"
         placeholder="Search url by tag..."
         value={search}
         onChange={(e) => handleSearchChange(e)}
-        style={{ padding: "8px" }}
+        style={{ padding: "8px", width: "60%" }}
       />
+    
        </div>
+
+         </div>
+       
   
         {/*submit form  */}
   <form onSubmit={handleSubmit}>

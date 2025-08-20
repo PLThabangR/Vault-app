@@ -57,6 +57,21 @@ button{
   margin:10px;
 }
 
+.navbar{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-evenly;
+  align-items:center;
+}
+.heading{
+     text-align: center;   
+    font-size: 15px
+
+    margin:10px;
+    padding:10px;
+    
+    color:rgb(255, 22, 134);
+}
 .heading-sub{
    text-align: center;
    
@@ -100,13 +115,19 @@ button:hover {
         
      
     }
-
+.navbar{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
     .card-container{
   display:flex;
   flex-direction:column;
   align-items:center;
   align-content:center;
- 
+  justify-content:center;
 
 }
 
