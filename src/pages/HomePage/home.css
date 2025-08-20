@@ -1,9 +1,11 @@
 .heading{
      text-align: center;
-    font-size:bold;
+   
+    font-size: 15px
     font-family:sans-serif;
     margin:10px;
-    padding:10px
+    padding:10px;
+    color:rgb(255, 22, 134);
 }
 
 .home-container{
@@ -12,7 +14,7 @@ heigth:100%;
   max-width:70%;
      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
      transition: 0.3s;
-   background-color: #cdcec8ff;
+ background-color: #FFE5EB;
     box-sizing: border-box;
     margin-top:5rem;
 }
@@ -24,7 +26,7 @@ heigth:100%;
   max-width:100%;
      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
      transition: 0.3s;
-   background-color: #cdcec8ff;
+    background-color: #FFE5EB;
     box-sizing: border-box;
     margin-top:2rem;
 }

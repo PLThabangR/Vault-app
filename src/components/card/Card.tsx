@@ -23,12 +23,13 @@ const Card = ({userlink, onUpdateUserLink, onDelete} :cardProps) => {
         <section className='card_section' >
             {/* Creating a card using text, button and image */}
 <div className='card_content' >
-        <h1>{userlink.title}</h1>
+  
+        <h1 className='card-header'>{userlink.title}</h1>
         <p>{userlink.description}</p>
-        <p>{userlink.tags}</p>
+        
        <div className='card-button'>
     {/* Passing the userlink to the onUpdateUserLink function which is on createlink */}
-        <button className='update-button'onClick={() => onUpdateUserLink(userlink.id)} >Update </button>
+        <button className='update-button'onClick={() => onUpdateUserLink(userlink.id,userlink)} >Update </button>
           <span className='delete-icon' onClick={() => onDelete(userlink.id)}><MdDelete style={{fontSize:'1rem'}}/></span>
        </div>
        

@@ -1,7 +1,7 @@
 import Card from "../../components/card/Card"
-import Search from "../../components/form/Search"
+
 import "./createLink.css"
-import {  use, useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
 
 
   interface userLinkInterface{
@@ -28,6 +28,9 @@ const CreateLink = () => {
     return userLinks ? JSON.parse(userLinks) : [];
    }))
   
+      const [filteredLinkArray, setFilteredLinkArray] = useState<userLinkInterface[]>([]);
+      //search state
+      const [search, setSearch] = useState('');
    //title state
    const [title, setTitle] = useState('');
    //link state
@@ -37,33 +40,90 @@ const CreateLink = () => {
    //tags state
    const [tags, setTags] = useState('');
 
+
+ 
+
+
+//displaysearrh card using link 
+const DisplaySearchCard = () =>{
+   //search array
+    return (
+      filteredLinkArray.map((userlink) => (
+      
+        <Card key={userlink.id} 
+        userlink={userlink}
+        onUpdateUserLink={onUpdateUserLink}
+        onDelete={onDeleteUserLink}
+        
+        />
+      ))
+    )
+}
+
+ const DisplayLink=()=>{
+    return (
+      userlinks.map((userlink) => (
+      
+        <Card key={userlink.id} 
+        userlink={userlink}
+        onUpdateUserLink={onUpdateUserLink}
+        onDelete={onDeleteUserLink}
+        
+        />
+      ))
+    )
+ }
+
+
+
 //Handle form changes
    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-     setTitle(event.target.value);
+    //Convert the first letter of the title to uppercase
+    const title = event.target.value;
+    //Set the title\
+     //Convert the first letter of the link to uppercase and join the string
+     
+    const titleToUppercase = title.charAt(0).toUpperCase() + title.slice(1);  
+    setTitle(titleToUppercase);
    };
    const handleLinkChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-     setLink(event.target.value);
+    const link = event.target.value;
+   setLink(link);
    };
    const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-     setDescription(event.target.value);
+    const description = event.target.value;
+    const descriptionToUppercase = description.charAt(0).toUpperCase() + description.slice(1)
+     setDescription(descriptionToUppercase);
    };
    const handleTagsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-     setTags(event.target.value);
+    const tags = event.target.value;
+    const tagsToUppercase = tags.charAt(0).toUpperCase() + tags.slice(1)
+
+     setTags(tagsToUppercase);
    };
+
+   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchTearm = event.target.value;
+    setSearch(searchTearm);
+   };
+
+   
  
    //Handle form submission when the user clicks the submit button
    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
      event.preventDefault();
-
      //Do nothing if title, link or description is empty
-     if(!title || !link || !description) return
+     if(!title || !link || !description) return alert('Please fill in all fields');
      //create new link object
      const newLink: userLinkInterface  = { 
       //Increase the id by 1 using the length of the userlinks
-      id: userlinks.length + 1,
+      id: Math.floor(Math.random() * 1000),
        title, link, description, tags };
      //Add new link to userlinks using the spread operator
      setUserLinks(userlinks=>[...userlinks, newLink]);
+
+     //Save userlinks to localstorage and convert json to a string
+     localStorage.setItem('userlinks', JSON.stringify(userlinks));
      //Reset the form values after saving
      setTitle('');
      setLink('');
@@ -75,7 +135,7 @@ const CreateLink = () => {
    //  event.preventDefault();
      //Map throught the list look for the userlink with the same id
      //Update the userlink
-      console.log("Update",id)
+   
      
       //looping thrpugh the userlinks and update the userlink with the same id
      setUserLinks(previousState => previousState.map(userlink => userlink.id === id ? {...userlink, title, link, description, tags} : userlink) )
@@ -86,17 +146,32 @@ const CreateLink = () => {
      setDescription('');
      setTags('');
     }; 
-   
-   //Save userlinks to localstorage
-  useEffect(()=>{
-    //Save userlinks to localstorage and convert json to a string
+
+    //Save userlinks to localstorage
+   useEffect(()=>{
+     //Save userlinks to localstorage and convert json to a string
      localStorage.setItem('userlinks', JSON.stringify(userlinks));
+   },[userlinks])
 
-     console.log("User link values ",userlinks)
 
+   //well call this function when the search term changes
+   //the use effect changes the ui dynamically as input is typed
+  useEffect(()=>{
     
-     //let the use effect run only when the userlinks change
-  },[userlinks])
+  //  handleSearchFunction()
+  //check if the search is empty or not
+    if(search.length > 0){
+     // filteredLinkArray =userlinks.filter((userlink) => userlink.tags?.toLowerCase().includes(search.toLowerCase()))
+     const filteredLinks = userlinks.filter((userlink) => userlink.tags?.toLowerCase().includes(search.toLowerCase()));
+     console.log("filteredLinks",filteredLinks)
+     //Set the filtered userlinks to the array
+     setFilteredLinkArray(filteredLinks);
+
+    }else{
+      setFilteredLinkArray([]);
+      console.log("filteredLinks",filteredLinkArray)
+     }
+  },[search.length>0])
 
  //Update userlink
 
@@ -111,15 +186,28 @@ const CreateLink = () => {
   
   return (
     <div className="create-link-container">
+      {/* Search component */}
+         {/* <Search  userlinks={userlinks}/> */}
+       <div className="search-container">
+          <input
+        type="text"
+        placeholder="Search url by tag..."
+        value={search}
+        onChange={(e) => handleSearchChange(e)}
+        style={{ padding: "8px" }}
+      />
+       </div>
+  
         {/*submit form  */}
   <form onSubmit={handleSubmit}>
     {/* input fields */}
+     <h1 className='heading'>Add new Url</h1>
      <div>
-        <input type="text" value={title} onChange={(e)=>handleTitleChange(e)} placeholder='Enter Title'/>
+        <input type="text" value={title} onChange={(e)=>handleTitleChange(e)} placeholder='Enter url Title'/>
     </div>
 
     <div>
-        <input type="text" value={link} onChange={(e)=>handleLinkChange(e)} placeholder='Enter link'/>
+        <input type="text" value={link} onChange={(e)=>handleLinkChange(e)} placeholder='Enter url'/>
     </div>
     <div>
         <input type="text" value={description} onChange={(e)=> handleDescriptionChange(e)} placeholder='Enter description'/>
@@ -128,22 +216,29 @@ const CreateLink = () => {
         <input type="text" value={tags} onChange={(e)=> handleTagsChange(e)} placeholder='Enter tags'/>
     </div>
   
-    <button type="submit" value="Submit">Save</button> 
+    <button type="submit" value="Submit">Save link</button> 
   </form>
 
-    <Search  userlinks={userlinks}/>
+ 
 
     {/* Display userlinks */}
-   <div className="card-container"> { userlinks.map((userlink) => (
+
+    <div>
+
+      {/* Display userlinks */}
+      {userlinks.length>0?(<h1>Links avalable</h1>):(<h1>No links avalable</h1>)}
       
-        <Card key={userlink.id} 
-        userlink={userlink}
-        onUpdateUserLink={onUpdateUserLink}
-        onDelete={onDeleteUserLink}
-        
-        />
-      ))}
+<div className="card-container"> 
+  { 
+  
+        filteredLinkArray.length>0? DisplaySearchCard():DisplayLink()
+      
+
+  }
       </div>
+
+    </div>
+   
 
     </div>
   )
