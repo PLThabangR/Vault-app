@@ -201,7 +201,6 @@ const DisplaySearchCard = () =>{
         {/*submit form  */}
   <form onSubmit={handleSubmit}>
     {/* input fields */}
-     <h1 className='heading'>Add new Url</h1>
      <div>
         <input type="text" value={title} onChange={(e)=>handleTitleChange(e)} placeholder='Enter url Title'/>
     </div>
@@ -216,7 +215,7 @@ const DisplaySearchCard = () =>{
         <input type="text" value={tags} onChange={(e)=> handleTagsChange(e)} placeholder='Enter tags'/>
     </div>
   
-    <button type="submit" value="Submit">Save link</button> 
+    <button type="submit" value="Submit">Add link</button> 
   </form>
 
  
@@ -226,7 +225,7 @@ const DisplaySearchCard = () =>{
     <div>
 
       {/* Display userlinks */}
-      {userlinks.length>0?(<h1>Links avalable</h1>):(<h1>No links avalable</h1>)}
+      {userlinks.length>0?(<h2 className='heading-sub'>Links avalable</h2>):(<h2 className='heading-sub'>No links avalable</h2>)}
       
 <div className="card-container"> 
   { 
