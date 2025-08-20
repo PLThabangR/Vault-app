@@ -55,6 +55,7 @@ button{
 .create-link-container{
   text-align:center;
   margin:10px;
+  // this must be removed in local dveelopment
   margin: 0 auto;
 heigth:100%;
   max-width:70%;
