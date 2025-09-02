@@ -47,5 +47,6 @@
 Contributions are welcome! Feel free to open issues or submit pull requests.
 📸 Screenshots
 ![Dashboard Screenshot](https://github.com/PLThabangR/Vault-app/blob/main/public/food_search.png)
+## Mobile view
 ![Dashboard Screenshot](https://github.com/PLThabangR/Vault-app/blob/main/public/mobilelinks.png)
 
