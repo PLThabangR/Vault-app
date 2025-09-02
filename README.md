@@ -1,15 +1,16 @@
-# 📌 Shopping list Application (React + TypeScript)
+# 📌 Link Vault basic crud Application (React + TypeScript)
 
-![Dashboard Screenshot](https://github.com/PLThabangR/shopping-list-app/blob/main/public/home_page.png)
+![Dashboard Screenshot](https://github.com/PLThabangR/Vault-app/blob/main/public/links.png)
 
 
-# A simple shopping list application with user authentication built with **React** and **TypeScript**, powered by a mock backend using **JSON Server**.
-
+# A simple crud operation application built with **React** and **TypeScript**, and Local Storage**.
+### Allows user to store link vaults  by entering name,url,description, and tag 
+### Users can find links by using the tags to search
 ---
 ## step 1
 - Clone this project using git clone 
   ```sh
-   git clone https://github.com/PLThabangR/shopping-list-app.git
+   git clone https://github.com/PLThabangR/Vault-app.git
    ```
 
 ## Step 2 
@@ -25,10 +26,7 @@
 ## 🛠️ Tech Stack
 - React (Frontend)
 - TypeScript (Type safety)
-- Shadcn UI (Tailwind)
-- React toolkit Query (State management)
-- JSON Server (Mock API)
-- Vite (Fast development environment)
+
   
 # 📂 Project Structure
 
@@ -38,14 +36,9 @@
 - ├── public/       # Static assets
 - └── package.json
 - ⚡ Features
-## Shopping list 
-- (name, quantity, description, etc.)
 
 # Add, edit, and delete item entries
 
-# Mock backend with JSON Server 
-
-Built with React + TypeScript for scalability
 
 
 
@@ -53,6 +46,6 @@ Built with React + TypeScript for scalability
 🤝 Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests.
 📸 Screenshots
-![Dashboard Screenshot](https://github.com/PLThabangR/shopping-list-app/blob/main/public/login.png)
-![Dashboard Screenshot](https://github.com/PLThabangR/shopping-list-app/blob/main/public/edit_page.png)
+![Dashboard Screenshot](https://github.com/PLThabangR/Vault-app/blob/main/public/food_search.png)
+![Dashboard Screenshot](https://github.com/PLThabangR/Vault-app/blob/main/public/mobilelinks.png)
 
