@@ -2,7 +2,7 @@
 
 ![Dashboard Screenshot](https://github.com/PLThabangR/Vault-app/blob/main/public/links.png)
 
-##Live demo
+## Live demo
 https://react-crud-b479gvij3-plthabangrs-projects.vercel.app/
 # A simple crud operation application built with **React** and **TypeScript**, and Local Storage**.
 ### Allows user to store link vaults  by entering name,url,description, and tag 
