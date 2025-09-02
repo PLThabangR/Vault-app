@@ -177,7 +177,7 @@ const DisplaySearchCard = () =>{
    };
   
   return (
-    <div className="create-link-container">
+    <div className="create-container">
         
       {/* Search component */}
          {/* <Search  userlinks={userlinks}/> */}

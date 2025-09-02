@@ -1,5 +1,11 @@
-//color code
-
-//rgb(255, 22, 134); //pink for headings
-
-// #521384;
+@media only screen and (max-width: 760px) {
+.home-container{
+heigth:100%;
+  max-width:100%;
+     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+     transition: 0.3s;
+    background-color: #FFE5EB;
+    box-sizing: border-box;
+    margin-top:2rem;
+}
+}

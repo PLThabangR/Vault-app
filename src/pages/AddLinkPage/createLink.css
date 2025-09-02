@@ -1,5 +1,5 @@
 input{
-  width: 60%;
+  width: 40%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -32,7 +32,7 @@ input:hover{
     }
 
 button{
-  width: 60%;
+  width: 40%;
  /* Basic Styling */
   background-color:#FF1E8A;
   color: white;
@@ -52,13 +52,16 @@ button{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease; /* Smooth transitions for hover/active states */
 }
-.create-link-container{
-  text-align:center;
-  margin:10px;
-  // this must be removed in local dveelopment
-  margin: 0 auto;
-heigth:100%;
-  max-width:70%;
+.create-container{
+  flex:display;
+  flex-directiomn:column;
+  justify-content:center;
+  align-items:center;
+
+
+
+
+
      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
      transition: 0.3s;
  background-color: #FFE5EB;

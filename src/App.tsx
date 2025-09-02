@@ -1,14 +1,15 @@
 
 import './App.css'
-import Home from './pages/HomePage/Home'
+import CreateLink from './pages/AddLinkPage/CreateLink'
+
 
 function App() {
   
 
   return (
     <>
-    <div className='main'>
-<Home/>
+    <div>
+    <CreateLink/>
     </div>
       
     </>
