@@ -177,25 +177,31 @@ const DisplaySearchCard = () =>{
    };
   
   return (
-    <div className="create-container">
+  <>
+    <h1 className='heading'>Link Vault</h1>
+    <div className='container'>
+       
+    <div className="div1">
+  <div className="form-container">
         
       {/* Search component */}
          {/* <Search  userlinks={userlinks}/> */}
 
          <div className="navbar">
-          <h1 className='heading'>Link Vaults</h1>
+          <h1 className='heading'>Create link</h1>
+         
+
+         </div>
           <div className="search-container">
           <input 
         type="text"
         placeholder="Search url by tag..."
         value={search}
         onChange={(e) => handleSearchChange(e)}
-        style={{ padding: "8px", width: "60%" }}
+        style={{ padding: "8px" }}
       />
     
        </div>
-
-         </div>
        
   
         {/*submit form  */}
@@ -222,7 +228,16 @@ const DisplaySearchCard = () =>{
 
     {/* Display userlinks */}
 
-    <div>
+   
+   
+
+    </div>
+
+
+    </div>
+
+    <div className="div2">
+     <div>
 
       {/* Display userlinks */}
       {userlinks.length>0?(<h2 className='heading-sub'>Links avalable</h2>):(<h2 className='heading-sub'>No links avalable</h2>)}
@@ -237,9 +252,10 @@ const DisplaySearchCard = () =>{
       </div>
 
     </div>
-   
-
     </div>
+    </div>
+  
+  </>
   )
 }
 
